@@ -47,6 +47,7 @@ class Overpass2Geojson {
         foreach ($nodes as $node) {
             $output['features'][] = array(
                 'type' => 'Feature',
+                'id' => 'node/'.$node['id'],
                 'properties' => isset($node['tags']) ? $node['tags'] : array(),
                 'geometry' => array(
                     'type' => 'Point',
@@ -113,6 +114,7 @@ class Overpass2Geojson {
         if (count($coords) >= 2) {
             return array(
                 'type' => 'Feature',
+                'id' => 'way/'.$way['id'],
                 'geometry' => array(
                     'type' => 'LineString',
                     'coordinates' => $coords,
